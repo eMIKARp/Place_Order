@@ -19,6 +19,6 @@ from Place_Order_Application import views
 
 urlpatterns = [
     re_path(r'^$',views.index,name='index'),
-    re_path(r'^',include('Place_Order_Application/urls')),
+    re_path(r'^',include('Place_Order_Application.urls')),
     path('admin/', admin.site.urls),
 ]

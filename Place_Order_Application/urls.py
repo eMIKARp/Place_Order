@@ -10,5 +10,7 @@ urlpatterns = [
     re_path(r'^administrator',views.administrator,name="administrator"),
     re_path(r'^add_user',views.add_user,name="add_user"),
     re_path(r'^add_product',views.add_product,name="add_product"),
+    re_path(r'^log_in',views.log_in,name="log_in"),
+    re_path(r'^check_status',views.check_status,name="check_status"),
 
 ]
