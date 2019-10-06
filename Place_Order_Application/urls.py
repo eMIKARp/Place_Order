@@ -12,5 +12,7 @@ urlpatterns = [
     re_path(r'^add_product',views.add_product,name="add_product"),
     re_path(r'^log_in',views.log_in,name="log_in"),
     re_path(r'^check_status',views.check_status,name="check_status"),
+    re_path(r'^add_category',views.add_category,name="add_category"),
+    re_path(r'^check_categories',views.check_categories,name="check_categories"),
 
 ]

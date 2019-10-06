@@ -30,21 +30,17 @@
             <!-- Menu with 2 buttons -->
             <div class="mMiddle">
                 <div style="display: flex;flex-direction: column;gap:5px;">
-                    {% if all_products %}
+                    {% if all_categories %}
                         <table class="table table-striped table-hover" style="table-layout: fixed;display:flex;flex-direction:column">
                             <thead class="thead-dark" style="display: table;width: 100%">
                                 <tr>
                                     <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody style="height: 250px;overflow: auto">
-                                {% for p in all_products %}
+                                {% for c in all_categories %}
                                     <tr>
-                                        <td>{{ p.name }}</td>
-                                        <td>{{ p.category.name }}</td>
-                                        <td>{{ p.price }}</td>
+                                        <td>{{ c.name }}</td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
