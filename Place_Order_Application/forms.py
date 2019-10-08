@@ -16,3 +16,9 @@ class Create_Category_Form(forms.ModelForm):
     class Meta:
         model=Category
         fields="__all__"
+
+
+class Create_Order_Form(forms.ModelForm):
+    class Meta:
+        model = Order
+        exclude=('status','time','user_who_placed_order')
