@@ -2,6 +2,7 @@ from django.shortcuts import render
 from Place_Order_Application.forms import Create_Product_Form
 from Place_Order_Application.forms import Create_Category_Form
 from Place_Order_Application.forms import Create_Order_Form
+from Place_Order_Application.forms import Register_User_Form
 from Place_Order_Application.models import Product
 from Place_Order_Application.models import Category
 from Place_Order_Application.models import Order
@@ -48,7 +49,17 @@ def administrator(request):
     return render(request,'Place_Order_Application/administrator.html',context=context)
 
 def add_user(request):
-    context = dict()
+
+    form = Register_User_Form()
+    if request.method=='POST':
+        form = Register_User_Form(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return guest(request)
+        else:
+            print("Form is invalid")
+
+    context = {'form':form,}
     return render(request,'Place_Order_Application/add_user.html',context=context)
 
 def add_product(request):
