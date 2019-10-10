@@ -1,86 +1,30 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Django loading static files -->
-    {% load staticfiles %}
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Own CSS -->
-    <link rel="stylesheet" href={% static 'Place_Order_Application/css/mystyles.css' %}>
-
-    <title>Check Orders</title>
-  </head>
-  <body>
-
-    <!-- Bootstrap container -->
-    <div class="grid-container">
-            <!-- Header-->
-            <div class="mTop" style="margin-top: 10px; background-color: lightblue; border-radius: 5px;">
-                <h1 class="display-4">Welcome to Place an Order </h1>
-                <p class="lead">Choose your favourite dish and order it. It will be delivered to you within 30 min.</p>
-            </div>
-            <!-- Header -->
-
-            <!-- Menu with 2 buttons -->
-            <div class="mMiddle">
-                <div style="display: flex;flex-direction: column;gap:5px;">
-                    {% if all_orders %}
-                        <table id='orders' class="table table-striped table-hover" style="table-layout: fixed;display:flex;flex-direction:column">
-                            <thead class="thead-dark" style="display: table;width: 100%">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Time</th>
-                                    <th>Address</th>
-                                    <th>Phone</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody style="height: 250px;overflow: auto">
-                                {% for o in all_orders %}
-                                    <tr>
-                                            <td>{{ o.id }}</td>
-                                            <td>{{ o.time }}</td>
-                                            <td>{{ o.address }}</td>
-                                            <td>{{ o.pnumber }}</td>
-                                            <td><a href="">{{ o.status }}</a></td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    {% endif %}
-                </div>
-            </div>
-            <!-- Menu with 2 buttons -->
-
-            <!-- Footer -->
-            <div class="mBottom" style="margin-bottom: 10px; background-color: lightblue; border-radius: 5px;">
-
-              <!-- Copyright -->
-              <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                <a href="{% url 'Place_Order_Application:index' %}"> Emil Karpowicz</a>
-              </div>
-              <!-- Copyright -->
-
-            </div>
-            <!-- Footer -->
-
-    </div>
-    <!-- Bootstrap container -->
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <!-- Ows JavaScript scripts  -->
-    <script type="application/javascript" src={% static 'Place_Order_Application/js/myscripts.js' %}></script>
-  </body>
-</html>
+{% extends 'Place_Order_Application/base.html' %}
+{% block body_block %}
+<div style="display: flex;flex-direction: column;gap:5px;">
+    {% if all_orders %}
+        <table id='orders' class="table table-striped table-hover" style="table-layout: fixed;display:flex;flex-direction:column">
+            <thead class="thead-dark" style="display: table;width: 100%">
+                <tr>
+                    <th>Id</th>
+                    <th>Time</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody style="height: 250px;overflow: auto">
+                {% for o in all_orders %}
+                    <tr>
+                            <td>{{ o.id }}</td>
+                            <td>{{ o.time }}</td>
+                            <td>{{ o.address }}</td>
+                            <td>{{ o.pnumber }}</td>
+                            <td><a href="">{{ o.status }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}
