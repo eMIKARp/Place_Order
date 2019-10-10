@@ -80,11 +80,6 @@ def log_in(request):
     context = dict()
     return render(request,'Place_Order_Application/log_in.html',context=context)
 
-def check_status(request):
-    context = dict()
-    return render(request,'Place_Order_Application/check_status.html',context=context)
-
-
 def check_categories(request):
 
     all_categories = Category.objects.all()

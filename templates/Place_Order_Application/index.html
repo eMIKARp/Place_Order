@@ -30,8 +30,8 @@
             <!-- Menu with 2 buttons -->
             <div class="mMiddle">
                 <div style="display: flex;flex-direction: column;gap:5px;">
-                    <a class='btn btn-lg btn-success' href="administrator" style="width: 250px" role="button">Manage</a>
-                    <a class='btn btn-lg btn-success' href="guest" style="width: 250px" role="button">Order</a>
+                    <a class='btn btn-lg btn-success' href="{% url 'Place_Order_Application:administrator' %}" style="width: 250px" role="button">Manage</a>
+                    <a class='btn btn-lg btn-success' href="{% url 'Place_Order_Application:guest' %}" style="width: 250px" role="button">Order</a>
                 </div>
             </div>
             <!-- Menu with 2 buttons -->
@@ -41,7 +41,7 @@
 
               <!-- Copyright -->
               <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                <a href="#"> Emil Karpowicz</a>
+                <a href="{% url 'Place_Order_Application:index' %}"> Emil Karpowicz</a>
               </div>
               <!-- Copyright -->
 

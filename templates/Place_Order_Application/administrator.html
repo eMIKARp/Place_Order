@@ -30,12 +30,12 @@
             <!-- Menu with 2 buttons -->
             <div class="mMiddle">
                 <div style="display: flex;flex-direction: column; gap: 5px">
-                    <a class='btn btn-lg btn-success' href="add_product" style="width: 250px" role="button">Add product</a>
-                    <a class='btn btn-lg btn-success' href="add_category" style="width: 250px" role="button">Add category</a>
-                    <a class='btn btn-lg btn-success' href="check_orders" style="width: 250px" role="button">Check orders</a>
-                    <a class='btn btn-lg btn-success' href="check_products" style="width: 250px" role="button">Check products</a>
-                    <a class='btn btn-lg btn-success' href="check_categories" style="width: 250px" role="button">Check categories</a>
-                    <a class='btn btn-lg btn-success' href="index" style="width: 250px" role="button">Main page</a>
+                    <a class='btn btn-lg btn-success' href="{%  url 'Place_Order_Application:add_product'%}" style="width: 250px" role="button">Add product</a>
+                    <a class='btn btn-lg btn-success' href="{%  url 'Place_Order_Application:add_category'%}" style="width: 250px" role="button">Add category</a>
+                    <a class='btn btn-lg btn-success' href="{%  url 'Place_Order_Application:check_orders'%}" style="width: 250px" role="button">Check orders</a>
+                    <a class='btn btn-lg btn-success' href="{%  url 'Place_Order_Application:check_products'%}" style="width: 250px" role="button">Check products</a>
+                    <a class='btn btn-lg btn-success' href="{%  url 'Place_Order_Application:check_categories'%}" style="width: 250px" role="button">Check categories</a>
+                    <a class='btn btn-lg btn-success' href="{%  url 'Place_Order_Application:index'%}" style="width: 250px" role="button">Main page</a>
                 </div>
             </div>
             <!-- Menu with 2 buttons -->
@@ -45,7 +45,7 @@
 
               <!-- Copyright -->
               <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                <a href="#"> Emil Karpowicz</a>
+                <a href="{% url 'Place_Order_Application:index' %}"> Emil Karpowicz</a>
               </div>
               <!-- Copyright -->
 
