@@ -4,5 +4,5 @@ from Place_Order_Application import models
 
 admin.site.register(models.Product)
 admin.site.register(models.Category)
-admin.site.register(models.User)
 admin.site.register(models.Order)
+admin.site.register(models.UserProfileInfo)

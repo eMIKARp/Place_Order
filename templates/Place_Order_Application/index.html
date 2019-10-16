@@ -1,5 +1,8 @@
 <!doctype html>
+
 {% extends 'Place_Order_Application/base.html' %}
+{% load my_custom_filters %}
+
 {% block body_block %}
 <div style="display: flex;flex-direction: column;gap:5px;">
     <a class='btn btn-lg btn-success' href="{% url 'Place_Order_Application:administrator' %}" style="width: 250px" role="button">Manage</a>

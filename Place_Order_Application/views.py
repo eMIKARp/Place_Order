@@ -3,6 +3,7 @@ from Place_Order_Application.forms import Create_Product_Form
 from Place_Order_Application.forms import Create_Category_Form
 from Place_Order_Application.forms import Create_Order_Form
 from Place_Order_Application.forms import Register_User_Form
+from Place_Order_Application.forms import User_Profile_Info_Form
 from Place_Order_Application.models import Product
 from Place_Order_Application.models import Category
 from Place_Order_Application.models import Order
@@ -12,6 +13,7 @@ from Place_Order_Application.models import Order
 
 def index(request):
     context = dict()
+
     return render(request,'Place_Order_Application/index.html',context=context)
 
 def place_order(request):
@@ -50,16 +52,33 @@ def administrator(request):
 
 def add_user(request):
 
-    form = Register_User_Form()
-    if request.method=='POST':
-        form = Register_User_Form(request.POST)
-        if form.is_valid():
-            form.save(commit=True)
-            return guest(request)
-        else:
-            print("Form is invalid")
 
-    context = {'form':form,}
+    if request.method == 'POST':
+        main_form = Register_User_Form(request.POST)
+        additional_info_form = User_Profile_Info_Form(request.POST)
+
+        if main_form.is_valid() and additional_info_form.is_valid():
+            user = main_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            additional_info = additional_info_form.save(commit=False)
+            additional_info.user=user
+
+            if 'picture' in request.FILES:
+                additional_info.picture = request.FILES['picture']
+            additional_info.save()
+
+            return render(request,'Place_Order_Application/guest.html')
+
+
+        else:
+            print("Form is invalid: ",main_form.errors,additional_info_form.errors)
+    else:
+        main_form = Register_User_Form()
+        additional_info_form = User_Profile_Info_Form()
+
+    context = {'main_form':main_form,'additional_info_form':additional_info_form}
     return render(request,'Place_Order_Application/add_user.html',context=context)
 
 def add_product(request):
