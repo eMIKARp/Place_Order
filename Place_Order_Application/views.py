@@ -8,6 +8,12 @@ from Place_Order_Application.models import Product
 from Place_Order_Application.models import Category
 from Place_Order_Application.models import Order
 
+from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -46,6 +52,7 @@ def check_orders(request):
     context = {'all_orders':all_orders,}
     return render(request,'Place_Order_Application/check_orders.html',context=context)
 
+@login_required
 def administrator(request):
     context = dict()
     return render(request,'Place_Order_Application/administrator.html',context=context)
@@ -95,9 +102,28 @@ def add_product(request):
     context = {'form':form,}
     return render(request,'Place_Order_Application/add_product.html',context=context)
 
+@login_required()
+def log_out(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
 def log_in(request):
-    context = dict()
-    return render(request,'Place_Order_Application/log_in.html',context=context)
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username,password=password)
+        if user:
+            if user.is_active:
+                login(request,user)
+                return HttpResponseRedirect(reverse(index))
+            else: HttpResponse('Account Not Active')
+        else:
+            HttpResponse('Invalid login details supplied')
+    else:
+        return render(request,'Place_Order_Application/log_in.html',{})
+
 
 def check_categories(request):
 

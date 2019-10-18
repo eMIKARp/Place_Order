@@ -7,6 +7,10 @@ from django.contrib.auth.models import User
 from Place_Order_Application.models import Order
 
 
+class Login_Form(forms.ModelForm):
+    pass
+
+
 class Register_User_Form(forms.ModelForm):
 
     password = forms.CharField(widget=forms.PasswordInput)

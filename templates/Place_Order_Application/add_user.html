@@ -6,7 +6,7 @@
     {% if registered %}
         <h1>You are allready registered</h1>
     {% else %}
-    <form method="POST" enctype="multipart/form-data">
+    <form class="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ main_form.as_p }}
         {{ additional_info_form.as_p }}
